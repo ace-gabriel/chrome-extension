@@ -1,0 +1,66 @@
+import os
+
+from setup import basedir
+
+
+class BaseConfig(object):
+  SECRET_KEY = "SO_SECURE"
+  DEBUG = True
+  SQLALCHEMY_DATABASE_URI = "mysql://root@localhost/wehomeproperty"
+  SQLALCHEMY_BINDS = {
+      "wehomeproperty":""mysql://root@localhost/wehomeproperty",
+      "datawarehouse": "postgresql+psycopg2://jerry@localhost/jerry"
+  }
+  SQLALCHEMY_TRACK_MODIFICATIONS = True
+  SQLALCHEMY_ECHO = True
+  SQLALCHEMY_RECORD_QUERIES = True
+  YUNPIAN_KEY = ""
+  # nexmo
+  NEXMO_KEY = ""
+  NEXMO_SECRET = ""
+  # linkedin
+  LINKEDIN_CLIENT_ID = ''
+  LINKEDIN_SECRET = ''
+  LINDEDIN_LOGIN_URL = 'https://www.linkedin.com/oauth/v2/authorization?'
+  LINKEDIN_STATE = '' # this is a rand string
+  LINKEDIN_CALLBACK = 'http://localhost:3000/linkedin-login'
+  LINKEDIN_TOKEN_URL = 'https://www.linkedin.com/oauth/v2/accessToken'
+  LINKEDIN_INFO_URL = 'https://api.linkedin.com/v1/people/~:(id,email-address,first-name,last-name,formatted-name,phone-numbers,picture-url)?format=json'
+  REFERRAL_BASE_URL = ''
+
+  # Sendgrid
+  SENDGRID_API_KEY = ""
+  SENDGRID_DEFAULT_FROM = "hi@wehome.io"
+
+  REDIS_URL = "redis://localhost:6379/0"
+  REDIS_SESSION_PORT = '6379'
+  REDIS_SESSION_HOST = 'localhost'
+  REDIS_DB = 1
+
+  # S3
+  S3_KEY = ""
+  S3_SECRET = ""
+  S3_BUCKET = "wehome-photos"
+  S3_UPLOAD_DIRECTORY = "general"
+  S3_UPLOAD_PDF_DIRECTORY = 'pdf'
+  S3_TMP_DIRECTORY = '/tmp/'
+
+  CELERY_BROKER_URL = "redis://localhost:6379/"
+  CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+
+  POPULAR_AREAS = ["40140","41860","42660","40900","41740","41700","41180","45300","47900","38900","38060","36740","38300","37980","35620","33460","31080","19740","26420","19820","33100","29820","19100","28140","16980","17140","12060","16740","12580","14460"]
+
+  ELASTICSEARCH_HOST = ['127.0.0.1:9200']
+
+  # kafka
+  KAFKA_HOSTS = "172.16.0.118:9092"
+
+
+class TestingConfig(object):
+  """Development configuration."""
+  TESTING = True
+  DEBUG = True
+  WTF_CSRF_ENABLED = False
+  SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+  DEBUG_TB_ENABLED = True
+  PRESERVE_CONTEXT_ON_EXCEPTION = False

@@ -1,0 +1,2 @@
+mock: cd static && npm run mock
+static: cd static && npm run start:mock

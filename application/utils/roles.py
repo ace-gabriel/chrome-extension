@@ -1,0 +1,3 @@
+CUSTOMER = [0]
+ADMIN = [1]
+EVERYONE = [0, 1]
